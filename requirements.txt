@@ -1,7 +1,6 @@
-datasets
-numpy
+numpy<2.0.0
+pandas==1.4.2
+datasets==4.3.0
 opencv-python-headless
-pandas
-Pillow
-pandas
 scikit-learn
+Pillow
