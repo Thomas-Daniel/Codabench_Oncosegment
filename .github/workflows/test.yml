@@ -49,8 +49,9 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Prepare input/output directories
-        # Uses your script to organize data for the test run
-        run: python tools/setup_data.py
+        run: |
+          docker run --rm -v ".:/app" -w "/app" ${{ env.DOCKER_IMAGE_NAME }} \
+              python tools/setup_data.py
 
       - name: Test ingestion program
         # Runs the ingestion program inside your challenge environment
