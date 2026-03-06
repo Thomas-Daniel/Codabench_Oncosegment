@@ -1,7 +1,7 @@
 # OncoSegment Codabench Template
 
 This repository is configured for the challenge:
-`OncoSegment - Breast Tumor Mapping`.
+`OncoSegment - Breast Tumor Mapping`. Link here: https://www.codabench.org/competitions/14387/
 
 Task scope in this template:
 - Binary segmentation on breast ultrasound images.
