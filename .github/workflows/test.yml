@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       # Use your actual Docker Hub image name instead of building locally
-      DOCKER_IMAGE_NAME: thomasdnil/oncosegment:v1 
+      DOCKER_IMAGE_NAME: thomasdnil/oncosegment:v2
 
     steps:
       - name: Delete unnecessary tools folder to free space
