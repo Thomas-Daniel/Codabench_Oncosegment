@@ -1,0 +1,69 @@
+version: 2
+title: OncoSegment - Breast Tumor Mapping
+description: Segment benign and malignant tumors in breast ultrasound images.
+image: logo.png
+registration_auto_approve: False  # if True, do not require approval from admin to join the comp
+
+terms: pages/terms.md
+pages:
+  - title: Description
+    file: pages/description.md
+  - title: Seed
+    file: pages/seed.md
+  - title: Timeline
+    file: pages/timeline.md
+
+tasks:
+  - index: 0
+    name: Development Task
+    docker_image: thomasdnil/oncosegment:v1
+    description: "Train on ultrasound train masks, evaluate with Dice/Jaccard on public and private splits."
+    input_data: dev_phase/input_data/
+    reference_data: dev_phase/reference_data/
+    ingestion_program: ingestion_program/
+    scoring_program: scoring_program/
+
+solutions:
+  - index: 0
+    tasks:
+      - 0
+    path: solution/
+
+phases:
+  - name: Development Phase
+    description: "Tune segmentation models against the public test split."
+    start: 03-02-2026
+    end: 03-31-2026
+    tasks:
+      - 0
+
+leaderboards:
+  - title: Results
+    key: main
+    columns:
+      - title: Public Dice
+        key: test_dice
+        index: 0
+        sorting: desc
+      - title: Public Jaccard
+        key: test_jaccard
+        index: 1
+        sorting: desc
+      - title: Private Dice
+        key: private_test_dice
+        index: 2
+        sorting: desc
+        hidden: True
+      - title: Private Jaccard
+        key: private_test_jaccard
+        index: 3
+        sorting: desc
+        hidden: True
+      - title: Train Time (s)
+        key: train_time
+        index: 4
+        sorting: asc
+      - title: Inference Time (s)
+        key: test_time
+        index: 5
+        sorting: asc

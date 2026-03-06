@@ -1,0 +1,7 @@
+datasets
+numpy
+opencv-python-headless
+pandas
+Pillow
+pandas
+scikit-learn
